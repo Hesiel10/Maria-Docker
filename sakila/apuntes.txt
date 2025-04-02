@@ -1,3 +1,7 @@
+iniciar
+(main) $ docker exec -it mariadb mysql -u root -p
+
+
 -Minimo privilegio 
  -Gestion de usuarios 
     'usuario'@'localhost'
