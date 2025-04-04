@@ -1,0 +1,139 @@
+CREATE TABLE personas (
+id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+edad tinyint UNSIGNED,
+nivel tinyint
+);
+
+INSERT INTO personas (nombre, edad, nivel)
+VALUES ('Ricardo Tapia', -8, 5);
+
+CREATE TABLE balance2(
+id int AUTO_INCREMENT PRIMARY KEY,
+saldo decimal(10,2),
+iva decimal(4,2)
+);
+
+INSERT INTO balance2 (saldo, iva)
+VALUES (5768.77, 99.99);
+
+CREATE TABLE cientifico (
+id int PRIMARY KEY AUTO_INCREMENT,
+atomos float,
+distancia double
+);
+
+INSERT INTO cientifico (atomos, distancia)
+VALUES (125.456789, 45.59);
+
+CREATE TABLE config (
+flags bit(8)
+);
+
+INSERT INTO config VALUES (b'1100010');
+
+select * from config 
+(sale 0)
+
+select bin(flags) from config;
+(muestra los datos)
+
+CREATE TABLE eventos(
+fecha_evento DATE, 
+fecha_registro DATE DEFAULT CURRENT_DATE
+);
+
+INSERT INTO eventos (fecha_evento)
+VALUES ('2025-12-25');
+
+CREATE TABLE horarios2(
+hora_inicio TIME,
+hora_fin TIME,
+hora_registro TIME DEFAULT  CURRENT_TIME
+);
+
+INSERT INTO horarios (hora_inicio. hora_fin)
+VALUES ('08:30:00', '18:00:00');
+INSERT INTO horarios2 (hora_inicio, hora_fin)
+VALUES ('08:30:00', '18:00:00');
+
+CREATE TABLE registros(
+fecha_hora DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO registros (fecha_hora)
+VALUES ('2025-04-04 13:30:15');
+
+CREATE TABLE logs (
+accion VARCHAR(100),
+creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO logs (accion)
+VAlUES ('usuario inicio secion');
+
+INSERT INTO logs (accion)
+VAlUES ('usuario cambio password');
+
+CREATE TABLE vehiculos(
+modelo year(4),
+fabricacion year(2)
+);
+
+INSERT INTO vehiculos(modelo, fabricacion)
+VALUES (2023, 15);
+
+select now();
+select curtime();
+select curdate();
+
+select now(), curdate(), curtime();
+
+SELECT * from eventos;
+
+select day(fecha_evento), 
+monthname(fecha_evento),
+year(fecha_evento) FROM eventos;
+
+select date_format(now(), '%W, %d, de %M de %Y');
+
+//diferencia de dias 
+SELECT datediff('2025-06-20', '2025-03-05');
+
+
+SELECT DATE_ADD(CURDATE(), interval 10 day);
+
+SELECT DATE_ADD(CURDATE(), interval -1 month);
+
+CREATE TABLE cliente(
+id int AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE pedidos(
+id int PRIMARY KEY,
+cliente_id int,
+FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+);
+
+CREATE TABLE usuarios(
+email VARCHAR(100) UNIQUE
+);
+
+INSERT INTO usuarios(email)
+VALUES ('bruno@gmail.com');
+
+CREATE TABLE productos(
+precio decimal(10,2) check(precio > 0),
+stock int check(stock >= 0)
+);
+
+INSERT INTO productos(precio, stock)
+VALUES (125.56, 10);
+
+INSERT INTO productos(precio, stock)
+VALUES (0.0, 10);
+
+INSERT INTO productos(precio, stock)
+VALUES (5.5, 0);

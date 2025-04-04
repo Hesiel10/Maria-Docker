@@ -34,4 +34,42 @@ Select SHA2('contraseña', 512); // se genera un hash
     -Llave Foranea FK
     -Integridad de dominio  -> ENUM ('Soltero', 'Casado', 'Viudo')
 
+Apuntes 04/04
+tinyint -> -187 a 128        1 byte 
+tinyint UNSIGNED  -> 0 - 255 1 byte
+UNSIGNED (restringe a que solo se puedan usar datos positivos)
+
+small                        2 bytes 
+integridadint                4 bytes
+bigint                       8 byte 
+
+(presicion exacta)
+Decimal (para numeros reales para una cantidad exacta de numeros)
+decimal (12,2) -> 1234567890,10 
+
+Float (presicion inexacta) 
+Double (presicion inexacta)
+
+Tipos especiales
+Manejo de datos de bits
+
+fecha y hora (DATE y TIME)
+se almacenan en el formato yyyy-mm-dd
+
+CURRENT_DATE registra la fecha actual
+
+Almacenar hora (TIME)
+(hh-mm-ss)
+
+CONSTRAINT -> restriccion
+
+UNIQUE
+
+
+
+
+
+
+
+
 
