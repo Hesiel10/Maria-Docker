@@ -1,0 +1,95 @@
+CREATE TABLE Paciente (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50) ,
+    fecha_nacimiento DATE ,
+    telefono VARCHAR(15)
+);
+
+CREATE TABLE Doctor (
+    id_doctor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    especialidad VARCHAR(50),
+    telefono VARCHAR(15)
+);
+
+CREATE TABLE Cita (
+    id_cita INT AUTO_INCREMENT PRIMARY KEY,
+    id_paciente INT,
+    id_doctor INT,
+    fecha_hora DATETIME,
+    motivo TEXT,
+    FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
+    FOREIGN KEY (id_doctor) REFERENCES Doctor(id_doctor)
+);
+
+CREATE TABLE Tratamiento (
+    id_tratamiento INT AUTO_INCREMENT PRIMARY KEY,
+    id_cita INT,
+    descripcion TEXT,
+    fecha_inicio DATE,
+    fecha_fin DATE,
+    FOREIGN KEY (id_cita) REFERENCES Cita(id_cita)
+);
+
+CREATE TABLE Medicamento (
+    id_medicamento INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion VARCHAR(200)
+);
+
+CREATE TABLE Tratamiento_Medicamento (
+    id_tratamiento INT,
+    id_medicamento INT,
+    dosis VARCHAR(100),
+    frecuencia VARCHAR(100),
+    PRIMARY KEY (id_tratamiento, id_medicamento),
+    FOREIGN KEY (id_tratamiento) REFERENCES Tratamiento(id_tratamiento),
+    FOREIGN KEY (id_medicamento) REFERENCES Medicamento(id_medicamento)
+);
+
+-- Pacientes
+INSERT INTO Paciente (nombre, apellido, fecha_nacimiento, telefono)
+VALUES 
+('Alfonso', 'Soto', '1995-03-15', '963852741'),
+('Eduardo', 'Mamani', '1999-07-20', '147258369'),
+('Victor', 'Pérez', '2000-03-15', '789456123'),
+('Oscar', 'Cruz', '2008-07-20', '123456789');
+
+-- Doctores
+INSERT INTO Doctor (nombre, especialidad, telefono)
+VALUES 
+('Dr. Marco Gonzales', 'Cardiología', '753951842'),
+('Dr. Vidal Perez', 'Neurologia', '123789456'),
+('Dr. Luis Quispe', 'Pediatría', '953751268');
+
+-- Citas
+INSERT INTO Cita (id_paciente, id_doctor, fecha_hora, motivo)
+VALUES 
+(1, 1, '2025-04-01 09:30:00', 'Punzadas en el corazon'),
+(2, 1, '2025-04-03 12:15:00', 'Chequeo general'),
+(3, 2, '2025-04-05 16:55:00', 'Dolor persistente de cabeza'),
+(4, 3, '2025-04-07 14:29:00', 'Fiebre persistente');
+
+-- Tratamientos
+INSERT INTO Tratamiento (id_cita, descripcion, fecha_inicio, fecha_fin)
+VALUES 
+(1, 'Tratamiento para hipertensión', '2025-04-01', '2025-04-30'),
+(2, 'Tratamiento para hipertensión', '2025-04-03', '2025-04-30'),
+(3, 'Tratamiento para Cefaleas', '2025-04-05', '2025-04-30'),
+(4, 'Tratamiento para infección viral', '2025-04-07', '2025-04-20');
+
+-- Medicamentos
+INSERT INTO Medicamento (nombre, descripcion)
+VALUES 
+('Enalapril', 'Inhibidor de la enzima convertidora de angiotensina'),
+('sumatriptán ', 'Bloquean las vías del dolor en el cerebro'),
+('Paracetamol', 'Analgésico y antipirético');
+
+-- Relación Tratamiento_Medicamento
+INSERT INTO Tratamiento_Medicamento (id_tratamiento, id_medicamento, dosis, frecuencia)
+VALUES 
+(1, 1, '10mg', '1 vez al día'),
+(2, 1, '05mg', '1 vez al día'),
+(3, 2, '15mg', '1 vez al día'),
+(4, 3, '500mg', 'cada 8 horas');
