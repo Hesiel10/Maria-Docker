@@ -1,6 +1,13 @@
 iniciar
 (main) $ docker exec -it mariadb mysql -u root -p
 
+exportar base de datos
+docker exec -i mariadb mysql -u root -prootpassword -e "CREATE DATABASE mi_base;"
+docker exec -i mariadb mysql -u root -prootpassword mi_base < ruta/al/archivo.sql
+docker exec -i mariadb mysql -u root -prootpassword mi_base < sql/nueva_base.sql
+
+docker exec -i mariadb mysql -u root -prootpassword auditoria < auditoria/bd_auditoria.sql
+
 
 -Minimo privilegio 
  -Gestion de usuarios 
