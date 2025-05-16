@@ -1,5 +1,11 @@
 iniciar
 (main) $ docker exec -it mariadb mysql -u root -p
+docker exec -it mariadb mysql -u root -p
+docker-compose up -d
+docker-compose stop dvwa
+docker-compose start dvwa
+docker-compose down -v
+docker-compose up -d
 
 exportar base de datos
 docker exec -i mariadb mysql -u root -prootpassword -e "CREATE DATABASE mi_base;"
