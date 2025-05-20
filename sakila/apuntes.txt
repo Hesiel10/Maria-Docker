@@ -7,12 +7,17 @@ docker-compose start dvwa
 docker-compose down -v
 docker-compose up -d
 
+docker-compose down -v  # elimina contenedores y volúmenes antiguos
+docker-compose up -d --build
+
+
 exportar base de datos
 docker exec -i mariadb mysql -u root -prootpassword -e "CREATE DATABASE mi_base;"
 docker exec -i mariadb mysql -u root -prootpassword mi_base < ruta/al/archivo.sql
 docker exec -i mariadb mysql -u root -prootpassword mi_base < sql/nueva_base.sql
 
-
+docker exec -i mariadb mysql -u root -prootpassword sakila < sakila/sakila-data.sql
+docker exec -i mariadb mysql -u root -prootpassword sakila < sakila/sakila-schema.sql
 docker exec -i mariadb mysql -u root -prootpassword auditoria < auditoria/bd_auditoria.sql
 docker exec -i mariadb mysql -u root -prootpassword segAcademico < SegAcademico/Scripts-1.sql
 

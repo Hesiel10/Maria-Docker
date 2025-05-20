@@ -22,9 +22,9 @@ services:
     ports:
       - "8080:80"
     environment:
-      - DB_SERVER=mariadb
-      - DB_DATABASE=auditoria
-      - DB_USER=usuario
+      -  DB_SERVER=dvwa-db
+      - DB_DATABASE=dvwa_db
+      - DB_USER=admin
       - DB_PASSWORD=password
     volumes:
       - ./config.inc.php:/var/www/html/config/config.inc.php
@@ -32,5 +32,19 @@ services:
       - mariadb
     restart: always
 
+  dvwa-db:
+    image: mariadb:10.11
+    container_name: dvwa-db
+    environment:
+      MYSQL_ROOT_PASSWORD: dvwaroot
+      MYSQL_DATABASE: dvwa_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    volumes:
+      - dvwa_data:/var/lib/mysql
+    restart: always
+
+
 volumes:
   mariadb_data:
+  dvwa_data:

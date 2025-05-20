@@ -15,9 +15,9 @@ $DBMS = getenv('DBMS') ?: 'MySQL';
 # If you are using MariaDB then you cannot use root, you must use create a dedicated DVWA user.
 #   See README.md for more information on this.
 $_DVWA = array();
-$_DVWA[ 'db_server' ]   = 'mariadb';        // nombre del servicio en docker-compose
-$_DVWA[ 'db_database' ] = 'auditoria';     // nombre DB creada en mariadb
-$_DVWA[ 'db_user' ]     = 'usuario';         // usuario DB
+$_DVWA[ 'db_server' ] = 'dvwa-db';
+$_DVWA[ 'db_database' ] = 'dvwa_db';     // nombre DB creada en mariadb
+$_DVWA[ 'db_user' ]     = 'admin';         // usuario DB
 $_DVWA[ 'db_password' ] = 'password';     // password DB
 $_DVWA[ 'db_port']      = '3306';
 
