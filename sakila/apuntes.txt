@@ -1,3 +1,4 @@
+https://portswigger.net/burp/releases/professional-community-2025-3-4
 iniciar
 (main) $ docker exec -it mariadb mysql -u root -p
 docker exec -it mariadb mysql -u root -p
@@ -20,7 +21,8 @@ docker exec -i mariadb mysql -u root -prootpassword sakila < sakila/sakila-data.
 docker exec -i mariadb mysql -u root -prootpassword sakila < sakila/sakila-schema.sql
 docker exec -i mariadb mysql -u root -prootpassword auditoria < auditoria/bd_auditoria.sql
 docker exec -i mariadb mysql -u root -prootpassword segAcademico < SegAcademico/Scripts-1.sql
-
+docker exec -i mariadb mysql -u root -prootpassword tiendaTecno; < tiendaTecno;/tienda/bd_tiendatecno.sql
+docker exec -i mariadb mysql -u root -prootpassword tiendaTecno < auditoria/bd_tiendatecno.sql
 
 -Minimo privilegio 
  -Gestion de usuarios 
